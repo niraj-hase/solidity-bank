@@ -1,0 +1,27 @@
+pragma solidity 0.4.25;
+
+contract MMS{
+    struct Student{
+        int Id;
+        string Fname;
+        string Lname;
+        int Marks;
+    }
+
+
+    int public studntCount = 0;
+
+    mapping(int => Student) public studentRecord;
+
+    
+
+    function addNew(int _id, string memory _fname, string memory _lname, int _marks)public {
+        studntCount = studntCount+1;
+        studentRecord[studntCount] = Student(_id,_fname,_lname,_marks);
+    }
+
+    function bonusMarks(int _marks) public{
+        studentRecord[studntCount].Marks = studentRecord[studntCount].Marks + _marks;
+    }
+
+}
